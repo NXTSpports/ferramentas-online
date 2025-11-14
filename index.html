@@ -4,86 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolkitBR - Ferramentas Online Profissional</title>
-<meta name="description" content="ToolkitBR oferece ferramentas online gratuitas com layout profissional: conversores, calculadoras, geradores e utilidades do dia a dia.">
+<meta name="description" content="ToolkitBR oferece ferramentas online profissionais, com layout corporativo, inputs diretos e visual moderno.">
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8180545239650189"
      crossorigin="anonymous"></script>
 
 <style>
-/* RESET & BASE */
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background: #f0f2f5; color: #333; }
+/* BASE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:#f4f6f9;color:#333;}
+header{background:#0d253f;color:white;padding:20px;position:sticky;top:0;z-index:100;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+header h1{font-size:2em;margin-bottom:10px;}
+nav{display:flex;justify-content:center;flex-wrap:wrap;}
+nav button{margin:5px 10px;padding:12px 22px;border:none;border-radius:8px;background:#1f4f78;color:white;font-weight:bold;cursor:pointer;transition:0.3s;}
+nav button:hover{background:#28a745;}
+nav button.active{background:#28a745;}
 
-/* HEADER */
-header { background: #0d253f; color:white; padding:25px 10px; text-align:center; }
-header h1 { font-size:2em; margin-bottom:10px; }
-nav { margin-top:15px; }
-nav button { background:#1f4f78; color:white; border:none; padding:12px 20px; margin:0 8px; cursor:pointer; border-radius:8px; font-weight:bold; transition: all 0.3s; }
-nav button:hover { background:#28a745; }
-nav button.active { background:#28a745; }
+/* MAIN SECTIONS */
+main{max-width:1200px;margin:30px auto;padding:0 20px;}
+section{display:none;background:white;padding:30px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,0.1);margin-bottom:25px;transition:0.5s;}
+section.active{display:block;}
+h2{color:#0d253f;margin-bottom:25px;font-size:2em;}
 
-/* SECTIONS */
-main { max-width:1100px; margin:30px auto; padding:0 15px; }
-section { display:none; background:white; padding:25px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.1); margin-bottom:25px; transition:0.5s; }
-section.active { display:block; }
-h2 { color:#0d253f; margin-bottom:20px; font-size:1.8em; }
-
-/* TOOLS CARDS */
-.tools { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; }
-.tools a { display:block; background:#1f4f78; color:white; padding:25px; text-align:center; text-decoration:none; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15); font-weight:bold; transition:all 0.3s; }
-.tools a:hover { background:#28a745; transform:translateY(-5px); }
+/* TOOLS GRID */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.tool-card{background:#1f4f78;color:white;padding:20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.15);transition:all 0.3s;cursor:pointer;}
+.tool-card:hover{background:#28a745;transform:translateY(-5px);}
+.tool-card h3{margin-bottom:10px;text-align:center;}
+.tool-card input, .tool-card button{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:none;font-size:1em;}
+.tool-card button{background:#0d253f;color:white;font-weight:bold;cursor:pointer;transition:0.3s;}
+.tool-card button:hover{background:#28a745;}
 
 /* TOOL OUTPUT */
-#tool-output { margin-top:25px; padding:20px; background:#f1f5f9; border-radius:10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); min-height:60px; font-weight:bold; }
+#tool-output{margin-top:20px;padding:20px;background:#f1f5f9;border-radius:10px;min-height:70px;font-weight:bold;box-shadow:inset 0 2px 5px rgba(0,0,0,0.05);}
 
 /* FORM */
-form input, form textarea { width:100%; padding:15px; margin:10px 0; border-radius:10px; border:1px solid #ccc; font-size:1em; }
-form button { background:#28a745; color:white; border:none; padding:15px 20px; border-radius:10px; cursor:pointer; font-size:1em; transition:0.3s; }
-form button:hover { background:#1f7a2f; }
+form input, form textarea{width:100%;padding:15px;margin:10px 0;border-radius:10px;border:1px solid #ccc;font-size:1em;}
+form button{background:#28a745;color:white;border:none;padding:15px 20px;border-radius:10px;cursor:pointer;font-size:1em;transition:0.3s;}
+form button:hover{background:#1f7a2f;}
 
 /* FOOTER */
-footer { background:#0d253f; color:white; text-align:center; padding:20px 10px; margin-top:30px; font-size:0.9em; }
-footer a { color:#28a745; text-decoration:none; margin:0 5px; }
-footer a:hover { text-decoration:underline; }
-
-/* RESPONSIVE */
-@media(max-width:600px){
-  nav button { margin:5px 0; width:100%; }
-  .tools { grid-template-columns: 1fr; }
-}
+footer{background:#0d253f;color:white;text-align:center;padding:20px 10px;margin-top:30px;font-size:0.9em;}
+footer a{color:#28a745;text-decoration:none;margin:0 5px;}
+footer a:hover{text-decoration:underline;}
+@media(max-width:600px){nav button{width:100%;} .tools{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <header>
-<h1>ToolkitBR - Ferramentas Online</h1>
+<h1>ToolkitBR - Ferramentas Online Profissional</h1>
 <nav>
-  <button class="tab-button active" data-target="ferramentas">Ferramentas</button>
-  <button class="tab-button" data-target="sobre">Sobre</button>
-  <button class="tab-button" data-target="contato">Contato</button>
-  <button class="tab-button" data-target="privacidade">Política</button>
+<button class="tab-button active" data-target="ferramentas">Ferramentas</button>
+<button class="tab-button" data-target="sobre">Sobre</button>
+<button class="tab-button" data-target="contato">Contato</button>
+<button class="tab-button" data-target="privacidade">Política</button>
 </nav>
 </header>
 
 <main>
 <!-- FERRAMENTAS -->
 <section id="ferramentas" class="active">
-<h2>Ferramentas Disponíveis</h2>
+<h2>Ferramentas</h2>
 <div class="tools">
-  <a href="#" onclick="conversorMoeda()">Conversor de Moeda</a>
-  <a href="#" onclick="calculadora()">Calculadora</a>
-  <a href="#" onclick="geradorSenha()">Gerador de Senhas</a>
-  <a href="#" onclick="contadorCaracteres()">Contador de Caracteres</a>
-  <a href="#" onclick="geradorNick()">Gerador de Nicks</a>
-  <a href="#" onclick="calculadoraJuros()">Calculadora de Juros</a>
+  <!-- Conversor de Moeda -->
+  <div class="tool-card">
+    <h3>Conversor de Moeda</h3>
+    <input type="number" id="moedaInput" placeholder="Valor em R$">
+    <button onclick="conversorMoeda()">Converter</button>
+  </div>
+  
+  <!-- Calculadora -->
+  <div class="tool-card">
+    <h3>Calculadora</h3>
+    <input type="text" id="calcInput" placeholder="Digite operação (ex: 2+2)">
+    <button onclick="calculadora()">Calcular</button>
+  </div>
+  
+  <!-- Gerador de Senha -->
+  <div class="tool-card">
+    <h3>Gerador de Senhas</h3>
+    <button onclick="geradorSenha()">Gerar Senha</button>
+  </div>
+  
+  <!-- Contador de Caracteres -->
+  <div class="tool-card">
+    <h3>Contador de Caracteres</h3>
+    <input type="text" id="contadorInput" placeholder="Digite o texto">
+    <button onclick="contadorCaracteres()">Contar</button>
+  </div>
 </div>
-
 <div id="tool-output"><p>Escolha uma ferramenta acima para começar.</p></div>
 
 <!-- AdSense -->
 <ins class="adsbygoogle"
-     style="display:block; margin-top:25px;"
+     style="display:block;margin-top:25px;"
      data-ad-client="ca-pub-8180545239650189"
      data-ad-slot="1234567890"
      data-ad-format="auto"
@@ -91,13 +107,11 @@ footer a:hover { text-decoration:underline; }
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </section>
 
-<!-- SOBRE -->
 <section id="sobre">
 <h2>Sobre o ToolkitBR</h2>
-<p>ToolkitBR é a plataforma profissional de ferramentas online. Todas as funcionalidades foram desenvolvidas para uso prático, direto no navegador, com design moderno e responsivo.</p>
+<p>Plataforma profissional de ferramentas online, desenvolvida para máxima produtividade e usabilidade. Design moderno, responsivo e interativo.</p>
 </section>
 
-<!-- CONTATO -->
 <section id="contato">
 <h2>Contato</h2>
 <form action="mailto:seuemail@exemplo.com" method="post" enctype="text/plain">
@@ -108,10 +122,9 @@ footer a:hover { text-decoration:underline; }
 </form>
 </section>
 
-<!-- PRIVACIDADE -->
 <section id="privacidade">
 <h2>Política de Privacidade</h2>
-<p>Nosso site respeita a sua privacidade. Nenhum dado pessoal é compartilhado com terceiros. Os dados do formulário de contato serão usados apenas para responder às mensagens.</p>
+<p>Respeitamos sua privacidade. Nenhum dado pessoal é compartilhado com terceiros. Formulários são usados apenas para responder mensagens.</p>
 </section>
 </main>
 
@@ -121,10 +134,10 @@ footer a:hover { text-decoration:underline; }
 </footer>
 
 <script>
-// ABAS
+// Abas
 const tabs = document.querySelectorAll('.tab-button');
-tabs.forEach(btn => {
-  btn.addEventListener('click', () => {
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
     document.querySelector('.tab-button.active').classList.remove('active');
     btn.classList.add('active');
     document.querySelector('section.active').classList.remove('active');
@@ -132,51 +145,34 @@ tabs.forEach(btn => {
   });
 });
 
-// FERRAMENTAS
+// Funções das ferramentas
 function conversorMoeda(){
-  const value = prompt("Digite o valor em R$:");
-  if(value) document.getElementById("tool-output").innerHTML = `<p>${value} R$ = ${(value*0.19).toFixed(2)} USD (exemplo)</p>`;
+  const value = parseFloat(document.getElementById('moedaInput').value);
+  if(!isNaN(value)){
+    document.getElementById('tool-output').innerHTML = `<p>${value} R$ = ${(value*0.19).toFixed(2)} USD (exemplo)</p>`;
+  }
 }
 
 function calculadora(){
-  const expr = prompt("Digite a operação (ex: 2+2):");
   try{
+    const expr = document.getElementById('calcInput').value;
     const result = eval(expr);
-    document.getElementById("tool-output").innerHTML = `<p>Resultado: ${result}</p>`;
+    document.getElementById('tool-output').innerHTML = `<p>Resultado: ${result}</p>`;
   } catch(e){
-    document.getElementById("tool-output").innerHTML = `<p>Operação inválida!</p>`;
+    document.getElementById('tool-output').innerHTML = `<p>Operação inválida!</p>`;
   }
 }
 
 function geradorSenha(){
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$";
-  let senha = "";
+  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$";
+  let senha="";
   for(let i=0;i<12;i++) senha += chars.charAt(Math.floor(Math.random()*chars.length));
-  document.getElementById("tool-output").innerHTML = `<p>Senha gerada: ${senha}</p>`;
+  document.getElementById('tool-output').innerHTML = `<p>Senha gerada: ${senha}</p>`;
 }
 
 function contadorCaracteres(){
-  const texto = prompt("Digite o texto:");
-  document.getElementById("tool-output").innerHTML = `<p>O texto tem ${texto.length} caracteres.</p>`;
-}
-
-function geradorNick(){
-  const nomes = ["Raptor","Shadow","Xtreme","Ninja","Wolf","Viper","Dragon"];
-  const nums = Math.floor(Math.random()*9999);
-  const nick = nomes[Math.floor(Math.random()*nomes.length)] + nums;
-  document.getElementById("tool-output").innerHTML = `<p>Seu nick: ${nick}</p>`;
-}
-
-function calculadoraJuros(){
-  const principal = parseFloat(prompt("Valor principal (R$):"));
-  const taxa = parseFloat(prompt("Taxa de juros mensal (%):"));
-  const meses = parseInt(prompt("Número de meses:"));
-  if(!isNaN(principal) && !isNaN(taxa) && !isNaN(meses)){
-    const total = principal * Math.pow(1 + taxa/100, meses);
-    document.getElementById("tool-output").innerHTML = `<p>Total após ${meses} meses: R$ ${total.toFixed(2)}</p>`;
-  } else {
-    document.getElementById("tool-output").innerHTML = `<p>Valores inválidos!</p>`;
-  }
+  const texto=document.getElementById('contadorInput').value;
+  document.getElementById('tool-output').innerHTML=`<p>O texto tem ${texto.length} caracteres.</p>`;
 }
 </script>
 
