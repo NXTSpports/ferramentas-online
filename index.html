@@ -1,369 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolkitBR - Ferramentas Online</title>
+  <meta name="description" content="ToolkitBR oferece ferramentas online gratuitas: conversores, calculadoras, geradores e utilidades do dia a dia.">
+  
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8180545239650189"
      crossorigin="anonymous"></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Toolkit Rápido — Conversores & Geradores</title>
+
   <style>
-    :root{--accent:#0b5ed7;--muted:#666}
-    body{font-family:Inter, system-ui, -apple-system, Roboto, "Helvetica Neue", Arial; margin:0; background:#f7f9fc; color:#0b1a2b}
-    header{background:linear-gradient(90deg,#ffffff, #eef6ff);padding:18px 20px;border-bottom:1px solid #e3eefc}
-    h1{margin:0;font-size:18px}
-    .wrap{max-width:980px;margin:20px auto;padding:8px}
-    nav{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-    button.tab{background:#fff;border:1px solid #e2e8f0;padding:8px 12px;border-radius:8px;cursor:pointer}
-    button.tab.active{border-color:var(--accent);box-shadow:0 6px 18px rgba(11,94,215,0.08)}
-    section.tools{background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 20px rgba(8,20,50,0.04)}
-    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    label{font-size:13px;color:var(--muted)}
-    input[type=text], input[type=number], textarea, select{padding:8px;border-radius:8px;border:1px solid #e6eef8;min-width:180px}
-    .toolbar{display:flex;gap:8px;margin-top:10px}
-    .result{margin-top:12px;padding:10px;border-radius:8px;background:#fbfdff;border:1px dashed #e6f0ff}
-    .flex{display:flex;gap:10px}
-    footer{margin:18px 0;color:var(--muted);font-size:13px}
-    .small{font-size:12px;color:#7b8897}
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    pre{white-space:pre-wrap;background:#0b1a2b;color:#e6f0ff;padding:10px;border-radius:8px}
-    /* responsive */
-    @media(max-width:800px){.split{grid-template-columns:1fr}}
+    body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; background:#f5f5f5;}
+    header { background:#222; color:white; padding:20px 10px; text-align:center;}
+    header h1 { margin:0;}
+    nav a { color:white; margin:0 10px; text-decoration:none; font-weight:bold;}
+    main { max-width:900px; margin:20px auto; padding:0 10px;}
+    section { background:white; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 0 5px rgba(0,0,0,0.1);}
+    h2 { color:#333; }
+    footer { background:#222; color:white; text-align:center; padding:15px 10px; margin-top:20px;}
+    a.button { display:inline-block; background:#007BFF; color:white; padding:10px 15px; text-decoration:none; border-radius:5px; margin-top:10px;}
+    form input, form textarea { width:100%; padding:10px; margin:5px 0; border-radius:5px; border:1px solid #ccc;}
+    form button { background:#28a745; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;}
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>Toolkit Rápido — Conversores & Geradores (All-in-One)</h1>
-      <div class="small">Tudo roda no navegador. Salve este arquivo como <code>toolkit.html</code> e abra no Chrome/Edge.</div>
-    </div>
-  </header>
 
-  <main class="wrap">
-    <nav id="tabs"></nav>
+<header>
+  <h1>ToolkitBR - Ferramentas Online</h1>
+  <nav>
+    <a href="#ferramentas">Ferramentas</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+    <a href="#privacidade">Política</a>
+  </nav>
+</header>
 
-    <section class="tools" id="content"></section>
+<main>
+  <section id="ferramentas">
+    <h2>Ferramentas Disponíveis</h2>
+    <ul>
+      <li>Conversor de Moeda</li>
+      <li>Calculadora Online</li>
+      <li>Gerador de Senhas</li>
+      <li>Conversor de Unidades</li>
+    </ul>
+    
+    <!-- AdSense exemplo -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8180545239650189"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </section>
 
-    <footer>
-      <div class="small">Observações rápidas: algumas conversões avançadas (ex: PDF→Word confiável, vídeo→MP3 em grande escala) exigem backend/servidor ou APIs externas. Onde houver limite, o painel explica como escalar para produção.</div>
-    </footer>
-  </main>
+  <section id="sobre">
+    <h2>Sobre o ToolkitBR</h2>
+    <p>O ToolkitBR oferece ferramentas online gratuitas e práticas para facilitar seu dia a dia. Nosso objetivo é fornecer utilidades confiáveis, rápidas e fáceis de usar diretamente no navegador.</p>
+  </section>
 
-<script>
-// --- App shell: tabs and components ---
-const tabs = [
-  {id:'pwd', label:'Gerador de Senhas'},
-  {id:'name', label:'Gerador de Nomes'},
-  {id:'hashtag', label:'Gerador de Hashtags'},
-  {id:'slogan', label:'Gerador de Slogans'},
-  {id:'bmi', label:'Calculadora IMC'},
-  {id:'interest', label:'Juros Compostos'},
-  {id:'salary', label:'Salário Líquido'},
-  {id:'img', label:'Redutor/Conversor de Imagem'},
-  {id:'filetools', label:'Conversores Simples'},
-  {id:'games', label:'Mini Games (engajamento)'}
-];
-const tabsNode = document.getElementById('tabs');
-const content = document.getElementById('content');
+  <section id="contato">
+    <h2>Contato</h2>
+    <form action="mailto:seuemail@exemplo.com" method="post" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
-tabs.forEach((t,i)=>{
-  const b = document.createElement('button'); b.className='tab'+(i===0?' active':''); b.textContent=t.label; b.dataset.id=t.id;
-  b.addEventListener('click', ()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderTab(t.id); });
-  tabsNode.appendChild(b);
-});
+  <section id="privacidade">
+    <h2>Política de Privacidade</h2>
+    <p>Nosso site respeita a sua privacidade. Nenhum dado pessoal é compartilhado com terceiros. Os dados do formulário de contato serão usados apenas para responder às suas mensagens.</p>
+  </section>
+</main>
 
-function renderTab(id){
-  content.innerHTML='';
-  switch(id){
-    case 'pwd': renderPasswordGenerator(); break;
-    case 'name': renderNameGenerator(); break;
-    case 'hashtag': renderHashtagGenerator(); break;
-    case 'slogan': renderSloganGenerator(); break;
-    case 'bmi': renderBMI(); break;
-    case 'interest': renderInterest(); break;
-    case 'salary': renderSalary(); break;
-    case 'img': renderImageTool(); break;
-    case 'filetools': renderFileTools(); break;
-    case 'games': renderMiniGames(); break;
-    default: content.textContent='Em construção';
-  }
-}
+<footer>
+  <p>© 2025 ToolkitBR - Todos os direitos reservados.</p>
+</footer>
 
-// --- 1. Password Generator ---
-function renderPasswordGenerator(){
-  content.innerHTML = `
-    <h2>Gerador de Senhas</h2>
-    <div class="row">
-      <label>Tamanho: <input id="pwdLen" type="number" min="4" max="64" value="16"></label>
-      <label><input id="pwdLower" type="checkbox" checked> letras minúsculas</label>
-      <label><input id="pwdUpper" type="checkbox" checked> letras maiúsculas</label>
-      <label><input id="pwdDigits" type="checkbox" checked> números</label>
-      <label><input id="pwdSymbols" type="checkbox"> símbolos</label>
-      <button id="genPwd">Gerar</button>
-    </div>
-    <div class="result"><input id="pwdOut" type="text" style="width:100%" readonly></div>
-  `;
-  document.getElementById('genPwd').onclick = ()=>{
-    const len = +document.getElementById('pwdLen').value;
-    const lower = document.getElementById('pwdLower').checked;
-    const upper = document.getElementById('pwdUpper').checked;
-    const digits = document.getElementById('pwdDigits').checked;
-    const symbols = document.getElementById('pwdSymbols').checked;
-    const chars = (lower? 'abcdefghijklmnopqrstuvwxyz':'') + (upper? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':'') + (digits? '0123456789':'') + (symbols? '!@#$%&*()-_=+[]{}<>?/':'');
-    if(!chars){ alert('Escolha ao menos um conjunto de caracteres.'); return; }
-    let out='';
-    for(let i=0;i<len;i++){ out += chars[Math.floor(Math.random()*chars.length)]; }
-    (document.getElementById('pwdOut')).value = out;
-  }
-}
-
-// --- 2. Nome de Empresa ---
-function renderNameGenerator(){
-  content.innerHTML = `
-    <h2>Gerador de Nomes</h2>
-    <div class="row">
-      <label>Palavras/tema (ex: tech, casa, café): <input id="nameSeed" type="text" placeholder="tech, smart"></label>
-      <label>Quantidade: <input id="nameQty" type="number" value="10" min="1" max="50"></label>
-      <button id="genNames">Gerar</button>
-    </div>
-    <div class="result" id="nameRes"></div>
-  `;
-  document.getElementById('genNames').onclick = ()=>{
-    const seed = document.getElementById('nameSeed').value.split(/[,\s]+/).filter(Boolean);
-    const qty = +document.getElementById('nameQty').value;
-    const syllables = ['nova','tech','max','pro','lab','hub','byte','soft','eco','prime','plus','core','flow','mint','loop','wise','fast','smart','nova','port'];
-    let out = '';
-    for(let i=0;i<qty;i++){
-      const a = seed.length ? seed[Math.floor(Math.random()*seed.length)] : syllables[Math.floor(Math.random()*syllables.length)];
-      const b = syllables[Math.floor(Math.random()*syllables.length)];
-      const num = Math.random() < 0.25 ? Math.floor(Math.random()*99)+1 : '';
-      out += `<div>${capitalize(a)}${capitalize(b)}${num}</div>`;
-    }
-    document.getElementById('nameRes').innerHTML = out;
-  }
-}
-function capitalize(s){ return String(s).charAt(0).toUpperCase()+String(s).slice(1); }
-
-// --- 3. Hashtag Generator ---
-function renderHashtagGenerator(){
-  content.innerHTML = `
-    <h2>Gerador de Hashtags</h2>
-    <div class="row">
-      <label>Palavras-chave (vírgula): <input id="htKeywords" type="text" placeholder="viagem, praia, verão"></label>
-      <label>Quantidade por palavra: <input id="htQty" type="number" value="5" min="1" max="30"></label>
-      <button id="genHT">Gerar</button>
-    </div>
-    <div class="result" id="htRes"></div>
-  `;
-  document.getElementById('genHT').onclick = ()=>{
-    const keywords = document.getElementById('htKeywords').value.split(/[,\s]+/).filter(Boolean);
-    const qty = +document.getElementById('htQty').value;
-    if(!keywords.length){ alert('Coloque ao menos uma palavra.'); return; }
-    const outArr = [];
-    keywords.forEach(k=>{
-      const base = k.replace(/[^a-zA-Z0-9]/g,'');
-      outArr.push('#'+base);
-      for(let i=1;i<qty;i++){
-        outArr.push('#'+base+randomSuffix());
-      }
-    });
-    document.getElementById('htRes').innerHTML = outArr.join(' ');
-  }
-}
-function randomSuffix(){ const s = ['Oficial','BR','2025','Life','Pro','Vibes','Top','Now']; return s[Math.floor(Math.random()*s.length)]+(Math.random()<0.3?Math.floor(Math.random()*99):''); }
-
-// --- 4. Slogan Generator ---
-function renderSloganGenerator(){
-  content.innerHTML = `
-    <h2>Gerador de Slogans</h2>
-    <div class="row">
-      <label>Produto/Empresa: <input id="slogSeed" type="text"></label>
-      <label>Tom: <select id="slogTone"><option>Confiante</option><option>Divertido</option><option>Minimal</option><option>Luxo</option></select></label>
-      <button id="genSlog">Gerar</button>
-    </div>
-    <div class="result" id="slogRes"></div>
-  `;
-  document.getElementById('genSlog').onclick = ()=>{
-    const seed = document.getElementById('slogSeed').value || 'Seu produto';
-    const tone = document.getElementById('slogTone').value;
-    const patterns = {
-      'Confiante': [`${seed}: qualidade que supera.`,`Confie em ${seed}, escolha vencedora.`,`${seed} — feito para durar.`],
-      'Divertido': [`${seed}: alegria a cada uso!`,`Sorria com ${seed}.`,`${seed} — fez bonito.`],
-      'Minimal': [`${seed}. Simples. Eficaz.`,`Menos é ${seed}.`,`Essencialmente ${seed}.`],
-      'Luxo': [`${seed} — o luxo acessível.`,`Eleve-se com ${seed}.`,`${seed}: requinte em cada detalhe.`]
-    };
-    document.getElementById('slogRes').innerHTML = patterns[tone].map(s=>`<div>${s}</div>`).join('');
-  }
-}
-
-// --- 5. BMI ---
-function renderBMI(){
-  content.innerHTML = `
-    <h2>Calculadora de IMC (BMI)</h2>
-    <div class="row">
-      <label>Peso (kg): <input id="bWeight" type="number" step="0.1"></label>
-      <label>Altura (m): <input id="bHeight" type="number" step="0.01" placeholder="1.75"></label>
-      <button id="calcBmi">Calcular</button>
-    </div>
-    <div class="result" id="bmiRes"></div>
-  `;
-  document.getElementById('calcBmi').onclick = ()=>{
-    const w = parseFloat(document.getElementById('bWeight').value);
-    const h = parseFloat(document.getElementById('bHeight').value);
-    if(!w||!h){ alert('Preencha peso e altura.'); return; }
-    const imc = w/(h*h);
-    let cat = '';
-    if(imc<18.5) cat='Abaixo do peso';
-    else if(imc<25) cat='Normal';
-    else if(imc<30) cat='Sobrepeso';
-    else cat='Obesidade';
-    document.getElementById('bmiRes').innerHTML = `<strong>IMC:</strong> ${imc.toFixed(2)} — ${cat}`;
-  }
-}
-
-// --- 6. Compound Interest ---
-function renderInterest(){
-  content.innerHTML = `
-    <h2>Juros Compostos</h2>
-    <div class="row">
-      <label>Principal (R$): <input id="ciP" type="number" step="0.01" value="1000"></label>
-      <label>Taxa anual (%): <input id="ciR" type="number" step="0.01" value="10"></label>
-      <label>Anos: <input id="ciN" type="number" value="1"></label>
-      <label>Capitalizações/ano: <input id="ciM" type="number" value="12"></label>
-      <button id="calcCi">Calcular</button>
-    </div>
-    <div class="result" id="ciRes"></div>
-  `;
-  document.getElementById('calcCi').onclick = ()=>{
-    const P = parseFloat(document.getElementById('ciP').value);
-    const r = parseFloat(document.getElementById('ciR').value)/100;
-    const n = parseFloat(document.getElementById('ciN').value);
-    const m = parseFloat(document.getElementById('ciM').value);
-    const A = P * Math.pow(1 + r/m, m*n);
-    document.getElementById('ciRes').innerHTML = `<strong>Valor final:</strong> R$ ${A.toFixed(2)}`;
-  }
-}
-
-// --- 7. Salary (simple) ---
-function renderSalary(){
-  content.innerHTML = `
-    <h2>Calculadora de Salário Líquido (simples)</h2>
-    <div class="row">
-      <label>Salário bruto (R$): <input id="salGross" type="number" step="0.01"></label>
-      <label>Descontos (INSS+Outros) %: <input id="salDesc" type="number" value="11" step="0.1"></label>
-      <label>IR % (se aplicável): <input id="salIR" type="number" value="0" step="0.1"></label>
-      <button id="calcSal">Calcular</button>
-    </div>
-    <div class="result" id="salRes"></div>
-    <div class="small">Nota: Esta é uma versão simples. Para cálculos oficiais no Brasil, integre tabelas do INSS/IR ou um backend.</div>
-  `;
-  document.getElementById('calcSal').onclick = ()=>{
-    const g = parseFloat(document.getElementById('salGross').value);
-    const d = parseFloat(document.getElementById('salDesc').value)/100;
-    const ir = parseFloat(document.getElementById('salIR').value)/100;
-    if(!g){ alert('Insira salário bruto.'); return; }
-    const after = g*(1 - d)*(1 - ir);
-    document.getElementById('salRes').innerHTML = `<strong>Líquido aproximado:</strong> R$ ${after.toFixed(2)}`;
-  }
-}
-
-// --- 8. Image resizer/converter ---
-function renderImageTool(){
-  content.innerHTML = `
-    <h2>Redutor/Conversor de Imagem</h2>
-    <div class="row">
-      <label>Escolha imagem: <input id="imgFile" type="file" accept="image/*"></label>
-      <label>Largura (px): <input id="imgW" type="number" value="1024"></label>
-      <label>Altura (px, opcional): <input id="imgH" type="number"></label>
-      <label>Formato: <select id="imgFmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></label>
-      <button id="doImg">Reduzir/Converter</button>
-    </div>
-    <div class="result" id="imgRes"></div>
-  `;
-  document.getElementById('doImg').onclick = ()=>{
-    const f = document.getElementById('imgFile').files[0];
-    if(!f){ alert('Escolha um arquivo.'); return; }
-    const w = parseInt(document.getElementById('imgW').value);
-    const h = document.getElementById('imgH').value ? parseInt(document.getElementById('imgH').value) : null;
-    const fmt = document.getElementById('imgFmt').value;
-    const reader = new FileReader();
-    reader.onload = (e)=>{
-      const img = new Image(); img.onload = ()=>{
-        const origW = img.width, origH = img.height;
-        let targetW = w; let targetH = h || Math.round(origH * (w / origW));
-        const canvas = document.createElement('canvas'); canvas.width = targetW; canvas.height = targetH;
-        const ctx = canvas.getContext('2d'); ctx.drawImage(img,0,0,targetW,targetH);
-        canvas.toBlob(blob=>{
-          const url = URL.createObjectURL(blob);
-          document.getElementById('imgRes').innerHTML = `<div>Original: ${origW}x${origH} — Resultado: ${targetW}x${targetH}</div><a href="${url}" download="converted.${fmt.includes('png')? 'png':'jpg'}">Baixar imagem</a>`;
-        }, fmt, 0.92);
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(f);
-  }
-}
-
-// --- 9. File tools (placeholders + client simple) ---
-function renderFileTools(){
-  content.innerHTML = `
-    <h2>Conversores Simples</h2>
-    <div class="split">
-      <div>
-        <h3>Texto / PDF (extrair texto simples)</h3>
-        <div class="row"><label>Selecione PDF: <input id="pdfFile" type="file" accept="application/pdf"></label></div>
-        <div class="small">Limitação: extração simples no navegador pode funcionar para PDFs textuais. Para melhores resultados use um backend com pdf.js ou serviços OCR.</div>
-        <div class="result" id="pdfRes"></div>
-        <button id="pdfExtract">Extrair texto (simples)</button>
-      </div>
-      <div>
-        <h3>Vídeo → Áudio (placeholder)</h3>
-        <div class="small">Converter vídeo para MP3 no navegador é possível com libs pesadas; o recomendado para produção é usar um servidor com ffmpeg. Aqui deixamos instruções de como integrar ao backend.</div>
-        <pre>Servidor ideal: ffmpeg (ex: ffmpeg -i input.mp4 -vn -ab 192k -ar 44100 -y output.mp3)</pre>
-      </div>
-    </div>
-  `;
-  document.getElementById('pdfExtract').onclick = ()=>{
-    const f = document.getElementById('pdfFile').files[0];
-    const out = document.getElementById('pdfRes'); out.innerHTML='';
-    if(!f){ alert('Escolha um PDF.'); return; }
-    // Quick & dirty: try to use PDF text extraction if browser supports PDF.js - not included here.
-    out.innerHTML = 'Extração local não implementada nesta versão. Para extrair texto no navegador, integre a biblioteca pdf.js no servidor ou frontend.';
-  }
-}
-
-// --- 10. Mini games (simple) ---
-function renderMiniGames(){
-  content.innerHTML = `
-    <h2>Mini Games (engajamento rápido)</h2>
-    <div class="row"><button id="playClick">Jogo do Click (10s)</button><div id="scoreBox"></div></div>
-    <div class="small">Mini games aumentam tempo no site — bom para anúncios. Use leaderboards com backend para viralizar.</div>
-  `;
-  document.getElementById('playClick').onclick = ()=>{
-    let score=0; const box = document.getElementById('scoreBox'); box.textContent='Clique no botão! 10s...';
-    const btn = document.createElement('button'); btn.textContent='Clique aqui'; box.appendChild(btn);
-    const start = Date.now();
-    const end = start + 10000; btn.onclick = ()=>{ if(Date.now() < end) score++; box.innerHTML=`Placar: ${score}`; };
-    setTimeout(()=>{ box.innerHTML = `Tempo! Placar final: ${score}`; }, 10000);
-  }
-}
-
-// initial render
-renderTab('pwd');
-
-</script>
 </body>
 </html>
-<title>Ferramentas Online — Rápido e Grátis</title>
-<meta name="description" content="Ferramentas online gratuitas: conversores, calculadoras, geradores e utilidades do dia a dia, tudo no navegador.">
-<footer style="text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ddd;">
-    <p>© 2025 Toolkit BR — Todas as ferramentas em um só lugar.</p>
-    <p>
-        <a href="/sobre.html">Sobre</a> |
-        <a href="/contato.html">Contato</a> |
-        <a href="/privacidade.html">Privacidade</a> |
-        <a href="/termos.html">Termos</a>
-    </p>
-</footer>
 
 
 
